@@ -1,39 +1,29 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import starImg from "~images/star.png";
 
-const Star = styled.span`
-	color: ${props => props.color || props.theme.colors.red};
+const Star = styled.img`
+	filter: ${props => (props.grayedOut ? "grayscale(100%) contrast(0.1)" : "")};
 	font-size: 5em;
 	text-align: left;
 `;
 
 const StarsWrapper = styled.div`
-	letter-spacing: -1em;
-	line-height: 0;
-	height: 1em;
-	margin-left: -0.65em;
+	margin-left: -2px;
 `;
 
 function buildStars(coloredIn, total) {
 	const stars = [];
 	for (let i = 0; i < total; i++) {
-		let color = null;
-		if (i >= coloredIn) {
-			color = "grey";
-		}
-		stars.push(
-			<Star color={color} key={`star${i}`}>
-				&#8902;
-			</Star>
-		);
+		stars.push(<Star grayedOut={i >= coloredIn} src={starImg} key={`star${i}`} />);
 	}
 
 	return stars;
 }
 
 const Stars = React.memo(props => {
-	return <StarsWrapper>{buildStars(props.coloredIn, props.total)}</StarsWrapper>;
+	return <StarsWrapper>{buildStars(props.coloredIn, props.total)}</StarsWrapper>
 });
 
 Stars.propTypes = {

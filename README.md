@@ -7,16 +7,24 @@ Run `npm install` in both `client` and `server` directories
 ## Running
 Run `npm start` in the `server` directory
 
-### Production
+#### Production
 Run `npm build:prd` in `client` then go to `localhost:3000`. The app will redirect to a product detail page (PDP) with a hard-coded product id to simulate a PDP url. 
 
-### Development
+#### Development
 Run `npm start` in `client`. This will start a `webpack-dev-server` server instance and automatically open a new browser window.
 
 ## Design decisions
+**Stack**:
+* React
+* Redux
+* Styled-Components
+* Jest + Enzyme and WebdriverIO for testing
+
 Since the focus of this app is on the front-end, the Express server is very minimal. Some basic APIs are available such as `addToCart`, but as far as persistence goes, it's all in-memory and simply serves to enable the front-end to function realistically.
 
 For a self-contained project like this, Redux is unnecessary and overcomplicates things, but it can also lay the foundation for future features - and in our pretend case-study this is intended to be a jumping off point future enhancements.
+## Tests
+`npm test` for unit tests and `npm run e2e` for end-to-end tests
 
 ## Improvements
 * Improve responsiveness implementation
