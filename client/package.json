@@ -8,7 +8,7 @@
     "build:prd": "webpack -p --mode production --config config/webpack.config.prd.js",
     "updateSnapshots": "jest --updateSnapshot",
     "test": "jest ./",
-    "wdio": "wdio"
+    "e2e": "wdio"
   },
   "dependencies": {
     "immer": "^1.7.4",

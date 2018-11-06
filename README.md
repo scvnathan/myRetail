@@ -28,10 +28,10 @@ Run `npm start` in `client`. This will start a `webpack-dev-server` server insta
 
 Since the focus of this app is on the front-end, the Express server is very minimal. Some basic APIs are available such as `addToCart`, but as far as persistence goes, it's all in-memory and simply serves to enable the front-end to function realistically.
 
-I chose Redux since I don't have as much experience with it as I would like given its popularity and utility, but for a self-contained project like this I think Redux is unnecessary and overcomplicates things, but it can also lay the foundation for future features - and in our pretend case-study this is intended to be a jumping off point future enhancements. 
-A simpler and easer to understand approach might be to use React's context API on its own inside containers. The selectors, however, are still handy given the gnarly structure of the dummy json response. Another improvement would be to do as much data processing on the server as possible, such as parsing dates and rearranging the data how the UI most easily consume it.
+I chose Redux since I don't have as much experience with it as I would like given its popularity and utility, but for a small, self-contained project like this I think Redux is unnecessary and overcomplicates things. However it can lay the foundation for future features - and in our pretend case-study this is intended to be a jumping off point future enhancements. 
+A simpler and easier to understand approach might be to use React's context API its own inside containers. The selectors, however, are still handy given the gnarly structure of the dummy json response. Another improvement would be to do as much data processing on the server as possible, such as parsing dates and rearranging the data how the UI most easily consume it.
 ## Tests
-`npm test` for unit tests and `npm run e2e` for end-to-end tests
+`npm test` for unit tests and `npm run e2e` for end-to-end tests. Be sure to start the node server and stop the webpack-dev-server before running `e2e`. 
 
 ## Improvements
 * Improve responsiveness implementation
