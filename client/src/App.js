@@ -32,16 +32,18 @@ const AppWrapper = styled.div`
 
 export const createTitleForPage = subtitle => `myRetail${subtitle ? ` - ${subtitle}` : ""}`;
 
+const demoProductId = '205273068'
 export default class App extends React.Component {
 	constructor(props) {
 		super(props);
-		document.title = createTitleForPage();
 		this.state = { onDemoUrl: false };
 	}
 
 	componentDidMount() {
-		//Redirect purely for URL prettiness as an example of what the PDP url would be
-		const demoUrl = "/product/205273068";
+		document.title = createTitleForPage();
+
+		//Redirect purely for URL prettiness as an example of what a PDP url could be
+		const demoUrl = `/product/${demoProductId}`;
 		if (location.pathname !== demoUrl) {
 			location = demoUrl;
 		} else {
@@ -52,7 +54,7 @@ export default class App extends React.Component {
 	render() {
 		return (
 			<AppWrapper>
-				{this.state.onDemoUrl && <ProductContainer />}
+				{this.state.onDemoUrl && <ProductContainer id={demoProductId}/>}
 				<GlobalStyle />
 			</AppWrapper>
 		);

@@ -10,11 +10,8 @@ export class ProductContainer extends React.Component {
 	}
 
 	async componentDidMount() {
-		//Our demo productId, defined by our dummy data
-		const productId = location.pathname.split("/").slice(-1);
-		const { fetchProduct } = this.props;
-		//in a real app productId would be defined in the props, perhaps passed by react-router
-		fetchProduct(productId);
+		const { fetchProduct, id} = this.props;
+		fetchProduct(id);
 	}
 
 	componentDidUpdate() {

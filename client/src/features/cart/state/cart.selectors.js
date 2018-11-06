@@ -1,5 +1,9 @@
 const parsePrice = price => Number(price.replace(/[^0-9.-]+/g, ""));
 
+/**
+ * Calculate the total price of the products in cart
+ *
+ */
 export function getTotal(state) {
 	const inventory = state.cart.inventory;
 	const ids = Object.keys(inventory);
@@ -12,6 +16,10 @@ export function getTotal(state) {
 	}, 0);
 }
 
+/**
+ * Calculate the total number of items in the cart
+ *
+ */
 export function getInventoryTotal(state) {
 	const inventory = state.cart.inventory;
 	const ids = Object.keys(inventory);
