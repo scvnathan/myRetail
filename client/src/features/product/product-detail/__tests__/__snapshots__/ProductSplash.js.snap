@@ -18,7 +18,8 @@ exports[`ProductSplash component Test render correctly 1`] = `
       src="data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7"
     />
     <div
-      className="Carousel__ViewLargerWrapper-sc-1g5uv4n-9 gXrQvO"
+      className="Carousel__ViewLargerWrapper-sc-1g5uv4n-9 eUFKZo"
+      onClick={[Function]}
     >
       <div
         className="Carousel__ViewLargerIcon-sc-1g5uv4n-8 gOrAyT"
