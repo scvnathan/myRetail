@@ -32,7 +32,7 @@ const AppWrapper = styled.div`
 
 export const createTitleForPage = subtitle => `myRetail${subtitle ? ` - ${subtitle}` : ""}`;
 
-const demoProductId = '205273068'
+const demoProductId = "205273068";
 export default class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -54,7 +54,7 @@ export default class App extends React.Component {
 	render() {
 		return (
 			<AppWrapper>
-				{this.state.onDemoUrl && <ProductContainer id={demoProductId}/>}
+				{this.state.onDemoUrl && <ProductContainer id={demoProductId} />}
 				<GlobalStyle />
 			</AppWrapper>
 		);

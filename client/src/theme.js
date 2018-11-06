@@ -1,7 +1,7 @@
 export default {
 	colors: {
-		red: '#cc0000',
-		text: '#333',
-		textLight:'#777',
+		red: "#cc0000",
+		text: "#333",
+		textLight: "#777"
 	}
-}
+};
