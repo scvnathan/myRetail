@@ -8,13 +8,15 @@ import { FullScreenLoader } from "~common/Loader";
 import ProductPurchaseOptions from "./ProductPurchaseOptions";
 import { Price, Qualifier } from "./Price";
 import ProductSplash from "~root/features/product/product-detail/ProductSplash";
-import CartContainer from "~root/features/cart/CartContainer";
-import CartInventory from "~root/features/cart/CartInventory"
+import CartInventory from "~root/features/cart/CartInventory";
 
+const minWidth = "490px;";
 const DetailColumn = styled.div`
-	min-width: 490px;
-	max-width: 490px;
-	margin-right: 2em;
+	min-width: ${minWidth};
+	max-width: ${minWidth};
+	@media all and (min-width: 999px) {
+		margin-right: 20px;
+	}
 `;
 
 const ReviewWrapper = styled(DetailColumn)`
@@ -25,14 +27,24 @@ const ReviewWrapper = styled(DetailColumn)`
 
 const ProductWrapper = styled.div`
 	flex-flow: wrap;
+	justify-content: center;
 	@media all and (min-width: 999px) {
+		justify-content: space-between;
 		flex-flow: nowrap;
 	}
 	display: flex;
 	flex-direction: row;
 `;
 
-const ProductDetail = (props) => {
+const CartInventoryWrapper = styled.div`
+	width: ${minWidth};
+	margin: 0 auto;
+	@media all and (min-width: 999px) {
+		margin: 0;
+		width: 100%;
+	}
+`;
+const ProductDetail = props => {
 	if (props.loading) {
 		return <FullScreenLoader />;
 	}
@@ -40,15 +52,16 @@ const ProductDetail = (props) => {
 	const { title, descriptions, pricing, images, channel, promos, id, reviews } = props;
 	return (
 		<>
+			<CartInventoryWrapper>
+				<CartInventory />
+			</CartInventoryWrapper>
 			<ProductWrapper>
-
 				<DetailColumn>
 					<ProductSplash images={images.all} initialImage={images.initial} title={title} maxViewable={3} />
 				</DetailColumn>
 
 				<DetailColumn>
 					<div>
-						<CartInventory />
 						<Price>{pricing.price}</Price>
 						<Qualifier>{pricing.qualifier}</Qualifier>
 					</div>
@@ -66,8 +79,8 @@ const ProductDetail = (props) => {
 			</ReviewWrapper>
 		</>
 	);
-}
-ProductDetail.displayName = 'ProductDetail';
+};
+ProductDetail.displayName = "ProductDetail";
 ProductDetail.propTypes = {
 	descriptions: PropTypes.object.isRequired,
 	images: PropTypes.object.isRequired,
