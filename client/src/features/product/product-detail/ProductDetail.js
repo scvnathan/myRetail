@@ -41,6 +41,7 @@ const ProductWrapper = styled.div`
 
 const CartInventoryWrapper = styled.div`
 	margin: 0 auto;
+	width:${minWidth};
 	@media all and (min-width: 999px) {
 		margin: 0;
 		width: 100%;
