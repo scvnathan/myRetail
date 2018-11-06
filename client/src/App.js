@@ -3,7 +3,6 @@ import styled, { createGlobalStyle } from "styled-components";
 import font from "~public/font/Roboto-Regular.ttf";
 import fontLight from "~public/font/Roboto-Light.ttf";
 import ProductContainer from "~root/features/product/product-detail/ProductContainer";
-import CartInventory from "~root/features/cart/CartInventory"
 
 const GlobalStyle = createGlobalStyle`
 	@font-face {
@@ -32,6 +31,7 @@ const AppWrapper = styled.div`
 `;
 
 export const createTitleForPage = subtitle => `myRetail${subtitle ? ` - ${subtitle}` : ""}`;
+
 export default class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -58,5 +58,3 @@ export default class App extends React.Component {
 		);
 	}
 }
-
-export const baseTitle = "myRetail";

@@ -1,6 +1,5 @@
 import React from "react";
 
-//import { hot } from 'react-hot-loader'
 import { render } from "react-dom";
 import { applyMiddleware, compose, createStore } from "redux";
 import { Provider } from "react-redux";

@@ -34,10 +34,11 @@ A simpler and easier to understand approach might be to use React's context API 
 `npm test` for unit tests and `npm run e2e` for end-to-end tests. Be sure to start the node server and stop the webpack-dev-server before running `e2e`. 
 
 ## Improvements
-* Improve responsiveness implementation
+* Improve responsiveness implementation.
 * Increase test coverage :)
-* Production webpack config could be more optimized. We could trim the dependencies more as well - for example, dayjs could be dropped in favor of parsing dates on the server.
+* Production webpack config could be more optimized (for this demo especially, the library overhead is pretty high even though its intentional)
 * The "ceremony" in handling the state from `WithProduct` is a bit much, especially with duplication of props from `ProductContainer` to `ProductDetail`. One quick solution would be to remove ProductContainer and use `WithProduct` with `ProductDetail`
+* Selector complexity can be reduced by pre-processing the response data on the server. Reselect could be used as well to help some potential memoization.
 * One of the the weakest parts of the app functionality-wise is the error handling.
 * Even though the design mockup doesn't have a visible indicator of how many items are in the cart, I think its necessary.
 * Add accessability affordances (bring in react-a11y to assess)
