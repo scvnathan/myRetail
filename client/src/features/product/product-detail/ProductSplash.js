@@ -1,6 +1,7 @@
 import React from "react";
 import Carousel from "~root/common/Carousel";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const Wrapper = styled.div`
 	width: ${props => props.width};
@@ -23,5 +24,11 @@ function ProductSplash(props) {
 		</Wrapper>
 	);
 }
+
+ProductSplash.propTypes = {
+	images: PropTypes.array.isRequired,
+	initialImage: PropTypes.number.isRequired,
+	title: PropTypes.string.isRequired,
+};
 
 export default React.memo(ProductSplash);

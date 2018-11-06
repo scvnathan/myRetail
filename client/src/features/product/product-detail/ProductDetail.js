@@ -81,4 +81,4 @@ ProductDetail.propTypes = {
 	id: PropTypes.number.isRequired
 };
 
-export default ProductDetail;
+export default React.memo(ProductDetail);

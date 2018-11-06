@@ -1,8 +1,6 @@
 import Maybe from 'maybe-baby';
-import {format} from '~root/util/DateFormat';
 
 const initialImagesState = {initial: 0, all: []};
-
 export function getImages(state) {
 	let imageData = initialImagesState;
 	const images = Maybe.of(() => state.product.data.Images[0]).orElse(false).join();
@@ -17,7 +15,6 @@ export function getImages(state) {
 }
 
 const initialPriceState = {price: '', qualifier: ''}
-
 export function getPrice(state) {
 	const priceData = initialPriceState;
 	priceData.price = Maybe.of(() => state.product.data.Offers[0].OfferPrice[0].formattedPriceValue).orElse(initialPriceState.price).join();

@@ -1,5 +1,5 @@
 import React from "react";
-import ProductPurchaseOptions from "../ProductPurchaseOptions";
+import {ProductPurchaseOptions} from "../ProductPurchaseOptions";
 import {shallow, mount} from "enzyme";
 import CanAddToCart from "~root/features/cart/CanAddToCart"
 import theme from '~root/theme';
