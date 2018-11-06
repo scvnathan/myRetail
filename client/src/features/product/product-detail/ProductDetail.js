@@ -19,8 +19,11 @@ const DetailColumn = styled.div`
 	}
 `;
 
-const ReviewWrapper = styled(DetailColumn)`
+const ReviewWrapper = styled.div`
+	display: flex;
+	justify-content: center;
 	@media all and (min-width: 999px) {
+		display: block;
 		margin-top: -8em;
 	}
 `;
@@ -37,7 +40,6 @@ const ProductWrapper = styled.div`
 `;
 
 const CartInventoryWrapper = styled.div`
-	width: ${minWidth};
 	margin: 0 auto;
 	@media all and (min-width: 999px) {
 		margin: 0;
