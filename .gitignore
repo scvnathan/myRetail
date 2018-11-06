@@ -1,6 +1,7 @@
 .idea
 *.iml
 public/app
+client/errorShots
 
 # Logs
 logs
