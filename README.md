@@ -36,8 +36,10 @@ A simpler and easier to understand approach might be to use React's context API 
 ## Improvements
 * Improve responsiveness implementation
 * Increase test coverage :)
+* Production webpack config could be more optimized. We could trim the dependencies more as well - for example, dayjs could be dropped in favor of parsing dates on the server.
 * The "ceremony" in handling the state from `WithProduct` is a bit much, especially with duplication of props from `ProductContainer` to `ProductDetail`. One quick solution would be to remove ProductContainer and use `WithProduct` with `ProductDetail`
 * One of the the weakest parts of the app functionality-wise is the error handling.
 * Even though the design mockup doesn't have a visible indicator of how many items are in the cart, I think its necessary.
 * Add accessability affordances (bring in react-a11y to assess)
 * Adopting TypeScript for static typing. I'd prefer it over Flow simply due to stronger overall support
+* For a real app, the structure would need to be rearranged so ProductContainer isn't the core, but just another page. We could also use React-Router if we wanted this to be an single page app.

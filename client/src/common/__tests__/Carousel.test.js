@@ -1,12 +1,19 @@
 import React from "react";
 import Carousel from "../Carousel";
-import { shallow } from "enzyme";
+import {shallow} from "enzyme";
+import renderer from "react-test-renderer";
 import testImages from "./images";
 
 describe("Carousel component", () => {
 	let wrapper;
 	beforeEach(() => {
-		wrapper = shallow(<Carousel images={testImages} />);
+		wrapper = shallow(<Carousel images={testImages}/>);
+	});
+
+	it("should render correctly", () => {
+		const comp = <Carousel images={testImages} title={"Hello!"} />
+		const tree = renderer.create(comp).toJSON();
+		expect(tree).toMatchSnapshot();
 	});
 
 	it("should render main image based on index (by default 0)", () => {

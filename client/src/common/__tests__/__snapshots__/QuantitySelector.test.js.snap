@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuantitySelect component should render correctly 1`] = `
+<div
+  className="QuantitySelect__Selector-sc-1732u5f-0 VPRYu"
+>
+  quantity:
+  <div
+    className="QuantitySelect__ButtonRow-sc-1732u5f-1 drZiNT"
+  >
+    <div
+      className="QuantitySelect__DecrementButton-sc-1732u5f-3 bJgkaZ"
+      data-test="decBtn"
+      onClick={[Function]}
+    />
+    <strong
+      data-test="quantityValue"
+      style={
+        Object {
+          "paddingTop": "5%",
+        }
+      }
+    >
+      1
+    </strong>
+    <div
+      className="QuantitySelect__IncrementButton-sc-1732u5f-2 lgLktx"
+      data-test="incBtn"
+      onClick={[Function]}
+    />
+  </div>
+</div>
+`;

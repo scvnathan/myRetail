@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import moment from 'moment';
+import {formatDate} from "~root/util/DateFormat";
 import Stars from "~root/common/Stars"
 
 const Body = styled.div`
@@ -12,7 +12,7 @@ const Body = styled.div`
 
 const ReviewItem = (props) => {
 	//TODO: This should probably be calculated in a selector or ideally on the server
-	const dateReviewed = moment(props.datePosted).format(props.dateFormat || 'MMMM DD, YYYY');
+	const dateReviewed = formatDate(props.datePosted);
 
 	return <>
 		<Stars coloredIn={props.rating} total={5}/>

@@ -5,5 +5,4 @@ import product from './product/state/product.reducers'
 export default combineReducers({
 	cart,
 	product,
-	loading: cart.loading || product.loading
 });

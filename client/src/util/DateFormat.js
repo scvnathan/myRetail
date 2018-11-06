@@ -1,6 +1,6 @@
-import moment from "moment";
+import dayjs from "dayjs";
 
-export function format(date) {
-	const m = moment(date);
-	return m.format("MMMM, dd, YYYY");
+export function formatDate(date, format = "MMMM DD, YYYY") {
+	const m = dayjs(date);
+	return m.format(format);
 }

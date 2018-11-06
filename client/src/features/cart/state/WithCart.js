@@ -7,6 +7,6 @@ export default comp => connect(state => {
 	return {
 		cart: state.cart,
 		inventoryTotal: selectors.getInventoryTotal(state),
-		loading: state.loading
+		loading: state.cart.loading,
 	}
 }, dispatch => bindActionCreators(actions, dispatch))(comp);

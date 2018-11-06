@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader component should render correctly (Fullscreen) 1`] = `
+<div
+  className="Loader__Wrapper-sc-14f76tl-1 BCCQG"
+>
+  <img
+    className="Loader__LoaderLogo-sc-14f76tl-0 hdyJfX"
+    src="test-file-stub"
+  />
+</div>
+`;
+
+exports[`Loader component should render correctly 1`] = `
+<img
+  className="Loader__LoaderLogo-sc-14f76tl-0 hdyJfX"
+  src="test-file-stub"
+/>
+`;

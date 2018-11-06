@@ -87,9 +87,9 @@ class QualitySelect extends React.Component {
 			<Selector>
 				quantity:
 				<ButtonRow>
-					<DecrementButton onClick={this.decrement} />
-					<strong style={{ paddingTop: "5%" }}>{this.state.quantity}</strong>
-					<IncrementButton onClick={this.increment} />
+					<DecrementButton data-test="decBtn" onClick={this.decrement} />
+					<strong data-test="quantityValue" style={{ paddingTop: "5%" }}>{this.state.quantity}</strong>
+					<IncrementButton data-test="incBtn" onClick={this.increment} />
 				</ButtonRow>
 			</Selector>
 		);

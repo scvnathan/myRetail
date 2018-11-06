@@ -58,19 +58,7 @@ const config = {
 	plugins: [
 		new CleanWebpackPlugin(projectDir('public/app'), {allowExternal: true}),
 		new webpack.HotModuleReplacementPlugin()
-	],
-	optimization: {
-		runtimeChunk: 'single',
-		splitChunks: {
-			cacheGroups: {
-				vendor: {
-					test: /[\\\/]node_modules[\\\/]/,
-					name: 'vendors',
-					chunks: 'all'
-				}
-			}
-		}
-	}
+	]
 };
 
 module.exports = {

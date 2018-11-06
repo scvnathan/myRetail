@@ -15,7 +15,6 @@ export default {
 		if (data.error) {
 			throw new Error(data.error);
 		}
-
 	},
 
 	fetchCurrentCart: async (id) => {
