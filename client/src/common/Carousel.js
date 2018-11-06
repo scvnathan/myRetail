@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, {createGlobalStyle} from "styled-components";
 import PropTypes from "prop-types";
 import arrow from "~images/arrow.png";
 import magnifyIcon from "~images/magnify.png";
@@ -18,12 +18,12 @@ const Thumbnail = styled.img`
 			border:1px solid #999;`
 			: ""};
 `;
-Thumbnail.displayName = 'Thumbnail'
+Thumbnail.displayName = "Thumbnail";
 
 const ThumbnailImageMask = styled.div`
 	justify-content: center;
 `;
-ThumbnailImageMask.displayName = 'ThumbnailImageMask'
+ThumbnailImageMask.displayName = "ThumbnailImageMask";
 
 const ThumbnailControl = styled.div`
 	display: flex;
@@ -46,12 +46,12 @@ const ThumbnailBtnLeft = styled.button`
 	${ThumbnailBtn};
 	transform: scaleX(-1);
 `;
-ThumbnailBtnLeft.displayName = 'ThumbnailBtnLeft'
+ThumbnailBtnLeft.displayName = "ThumbnailBtnLeft";
 
 const ThumbnailBtnRight = styled.button`
 	${ThumbnailBtn};
 `;
-ThumbnailBtnRight.displayName = 'ThumbnailBtnRight'
+ThumbnailBtnRight.displayName = "ThumbnailBtnRight";
 
 const CenterThumbnailBtn = styled.div`
 	padding: 0 15px 0;
@@ -64,7 +64,7 @@ const MainImage = styled.img`
 	margin: 0 auto 5em;
 	max-width: 100%;
 `;
-MainImage.displayName = 'MainImage'
+MainImage.displayName = "MainImage";
 
 const CarouselWrapper = styled.div`
 	display: flex;
@@ -88,10 +88,75 @@ const ViewLargerWrapper = styled.div`
 	font-size: 0.9em;
 	:hover {
 		cursor: pointer;
+		text-decoration: underline;
 	}
 `;
 
-//TODO: Implement enlarging the main image. Could use a simple portal
+const ImageModalWrapper = styled.div`
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: white;
+	overflow: hidden;
+	z-index: 2;
+
+	> img {
+		transform: scale(1.5);
+		box-shadow: 0 14px 28px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+`;
+
+const PreventScrolling = createGlobalStyle`
+	html {
+		> body {
+			overflow: hidden;
+		}
+	}
+`
+
+const ModalCloseBtnWrapper = styled.div`
+	position:absolute;
+	top:0;
+	right:50px;	
+`
+ModalCloseBtnWrapper.displayName = "ModalCloseBtn"
+
+const ModalCloseBtn = styled.div`
+	height: 50px;
+	width: 50px;
+
+	&:before,
+	&:after {
+		transform: rotate(-45deg);
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -10px / 2;
+		margin-left: -50px / 2;
+		display: block;
+		height: 10px;
+		width: 50px;
+		background-color: #333;
+	}
+
+	&:after {
+		transform: rotate(45deg);
+	}
+	&:hover {
+		cursor:pointer;
+	}
+`;
+
+function wrapAround(direction, index, length) {
+	return (index + length + direction) % length;
+}
+
 function ViewLarger(props) {
 	return (
 		<ViewLargerWrapper {...props}>
@@ -100,26 +165,32 @@ function ViewLarger(props) {
 	);
 }
 
-function wrapAround(direction, index, length) {
-	return (index + length + direction) % length;
-}
+const ImageModal = props => {
+	return (
+		<ImageModalWrapper>
+			<img src={props.src} />
+			<ModalCloseBtnWrapper  onClick={() => props.toggleFullscreen(false)}><ModalCloseBtn  /></ModalCloseBtnWrapper>
+		</ImageModalWrapper>
+	);
+};
 
 class Carousel extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { index: props.initial };
+		this.state = { index: props.initial, fullscreen: false };
 
 		this.next = this.next.bind(this);
 		this.prev = this.prev.bind(this);
 		this.getViewableThumbnailImages = this.getViewableThumbnailImages.bind(this);
+		this.toggleFullscreen = this.toggleFullscreen.bind(this);
 	}
 
 	shouldComponentUpdate(nextProps, nextState) {
-		if (nextState.index !== this.state.index) {
-			return true;
-		}
+		if (nextState.index !== this.state.index) return true;
+		if (nextState.fullscreen !== this.state.fullscreen) return true;
 		if (nextProps.maxViewable === this.props.maxViewable) return false;
-		if (nextProps.images.join('') === this.props.images.join('')) return false;
+		if (nextProps.images.join("") === this.props.images.join("")) return false;
+
 		return true;
 	}
 
@@ -137,6 +208,10 @@ class Carousel extends React.Component {
 
 	selectIndex(index) {
 		this.setState({ index });
+	}
+
+	toggleFullscreen(fullscreen) {
+		this.setState({ fullscreen });
 	}
 
 	//Note: Instead of centering the active image, it might be less jarring to instead anchor/put the active
@@ -180,7 +255,7 @@ class Carousel extends React.Component {
 		return (
 			<CarouselWrapper data-test={"carousel"}>
 				<MainImage src={images[this.state.index]} />
-				<ViewLarger />
+				<ViewLarger  onClick={() => this.toggleFullscreen(true)} />
 				<ThumbnailControl>
 					<CenterThumbnailBtn>
 						<ThumbnailBtnLeft data-test="thumbnailBtnLeft" onClick={this.prev} />
@@ -191,7 +266,7 @@ class Carousel extends React.Component {
 								<Thumbnail
 									isSelected={imgObj.index === this.state.index}
 									onClick={() => this.selectIndex(imgObj.index)}
-									key={imgObj.img+imgObj.index}
+									key={imgObj.img + imgObj.index}
 									src={imgObj.img}
 								/>
 							);
@@ -201,6 +276,12 @@ class Carousel extends React.Component {
 						<ThumbnailBtnRight data-test="thumbnailBtnRight" onClick={this.next} />
 					</CenterThumbnailBtn>
 				</ThumbnailControl>
+				{this.state.fullscreen && (
+					<>
+						<ImageModal data-test="imageModal" src={images[this.state.index]} toggleFullscreen={this.toggleFullscreen} />
+						<PreventScrolling/>
+					</>
+				)}
 			</CarouselWrapper>
 		);
 	}
@@ -209,7 +290,7 @@ class Carousel extends React.Component {
 Carousel.defaultProps = {
 	maxViewable: 10,
 	initial: 0
-}
+};
 
 Carousel.propTypes = {
 	images: PropTypes.array.isRequired,

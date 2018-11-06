@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
 		src: url(${fontLight});
 	}
 	
-	html, body {
+	body {
 		margin:0;
 		padding:0;
 		background-color: #fff;

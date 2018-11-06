@@ -11,6 +11,7 @@ exports[`Carousel component should render correctly 1`] = `
   />
   <div
     className="Carousel__ViewLargerWrapper-sc-1g5uv4n-9 eUFKZo"
+    data-test="viewLarger"
     onClick={[Function]}
   >
     <div

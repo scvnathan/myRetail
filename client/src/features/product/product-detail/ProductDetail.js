@@ -41,7 +41,9 @@ const ProductWrapper = styled.div`
 
 const CartInventoryWrapper = styled.div`
 	margin: 0 auto;
-	width:${minWidth};
+	width: ${minWidth};
+	display: flex;
+	flex-direction: row-reverse;
 	@media all and (min-width: 999px) {
 		margin: 0;
 		width: 100%;
