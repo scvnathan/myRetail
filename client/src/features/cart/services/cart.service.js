@@ -11,7 +11,7 @@ export default {
 			body: JSON.stringify({id, quantity})
 		})
 
-		let data = resp.json();
+		let data = await resp.json();
 		if (data.error) {
 			throw new Error(data.error);
 		}
